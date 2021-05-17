@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="Bmi.js"></script>
+    <script src="login.js"></script>
+    <script src="logindet.js"></script>
+    <script src="validateEmail.js"></script>
+    <script src="main.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(255, 255, 228);
+            overflow-y: hidden;
+        }
+        
+        .row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        
+        .col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        header {
+            width: 100%;
+            height: 7%;
+            border: 2px solid purple;
+            background-color: rgb(0, 109, 109);
+        }
+        
+        .hell {
+            font-size: 7vh;
+            padding-bottom: 2%;
+            padding-top: 0%;
+            text-align: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: rgb(255, 255, 255);
+        }
+        
+        .prof {
+            align-items: left;
+        }
+        
+        .main {
+            border: 2px solid rgb(0, 0, 0);
+            height: 97vh;
+            width: 98vw;
+        }
+        
+        .head {
+            border: 2px solid blue;
+            height: 11vh;
+            width: 98vw;
+            text-align: center;
+            font-size: 10vh;
+            color: rgb(190, 22, 78);
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        
+        .cont {
+            border: 2px solid red;
+            height: 6vh;
+            width: 98vw;
+            background-color: #7ec3cf;
+        }
+        
+        .tab {
+            padding-top: 1%;
+            height: 90%;
+            width: 12%;
+            text-align: center;
+            font-size: 3vh;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+            padding-bottom: 2%;
+            padding-top: 0.7%;
+            margin-top: 0.2%;
+            margin-left: 1%;
+            border: 0;
+            background-color: inherit;
+        }
+        
+        .file {
+            height: 80vh;
+            width: 98vw;
+            border: 2px solid green;
+            overflow-y: scroll;
+        }
+        
+        .hold {
+            height: 13%;
+            width: 23%;
+            margin-right: 0.7%;
+            margin-top: 0.7%;
+            margin-bottom: 0.7%;
+        }
+        
+        .hide {
+            height: 26%;
+            width: 46.7%;
+            margin-right: 0.7%;
+        }
+        
+        #q {
+            text-align: left;
+            font-size: 3.5vh;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        #w {
+            text-align: left;
+            font-size: 3.5vh;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        #e {
+            text-align: left;
+            font-size: 3.5vh;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        #r {
+            text-align: left;
+            font-size: 3.5vh;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        #t {
+            text-align: left;
+            font-size: 3.5vh;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        p {
+            font-family: 'times new roman';
+            font-size: 2.5vh;
+        }
+        
+        #logbox {
+            border: 2px solid black;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30vh;
+            width: 30vw;
+            background-color: #7ec3cf;
+            color: rgb(248, 248, 248);
+            box-shadow: 0px 0px 10px black;
+            border-radius: 25px;
+        }
+        
+        #BMIWin {
+            border: 2px solid black;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30vh;
+            width: 30vw;
+            background-color: #7ec3cf;
+            color: antiquewhite;
+            box-shadow: 0px 0px 10px black;
+            border-radius: 25px;
+        }
+        
+        #register {
+            border: 2px solid black;
+            font-size: 3vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60vh;
+            width: 30vw;
+            background-color: #7ec3cf;
+            color: antiquewhite;
+            box-shadow: 0px 0px 10px black;
+            border-radius: 25px;
+        }
+        
+        table {
+            border-collapse: separate;
+            border-spacing: 0 .5vh;
+        }
+        
+        .HeInputter {
+            width: 30%;
+            font-size: 20px;
+        }
+        
+        .genInput {
+            width: 90%;
+            font-size: 20px;
+        }
+        
+        #content {
+            width: 98vw;
+        }
+        
+        #personal1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .scroller {
+            overflow-y: scroll;
+        }
+    </style>
+    <!--Login Box-->
+    <div id="logbox">
+
+        <table>
+            <th style="font-size:3vh;" colspan="2">
+                Login
+            </th>
+            <tr>
+                <td>
+                    ID :
+                </td>
+                <td>
+                    <input class="genInput" id="user">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password &nbsp:
+                </td>
+                <td>
+                    <input class="genInput" id="pass" TYPE="password">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"> <span></span></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <center>
+                        <button class="genInput" id="login">Login</button>
+                    </center>
+                    <center>
+                        <button class="genInput" id="clickreg">Register</button>
+                    </center>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!--BMI Calculator-->
+    <div id="BMIWin">
+        <Heading></Heading>
+        <table>
+            <th style="font-size:3vh;" colspan="2">
+                Body Mass Index Calculator
+            </th>
+            <tr>
+                <td style="width:30%">
+                    Weight :
+                </td>
+                <td>
+                    <input style="width:40%;font-size:20px" type="number" id="w1" min="0">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Height :
+                </td>
+                <td>
+                    <input class="HeInputter" id="foot" type="number" min="0">'
+                    <input class="HeInputter" id="inches" type="number" min="0">"
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <center>
+                        <button class="genInput" id="findBmi">Calculate BMI</button>
+                    </center>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!--registration form-->
+    <div id="register">
+        <!--<form action="main.php" method="POST">-->
+
+        <table>
+            <tr>
+                <td><button id="back">Back</button></td>
+                <th style="font-size:4vh;" colspan="2">
+                    Register
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <td>
+                    <input class="genInput" id="user1" name="id">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Password &nbsp
+                </th>
+                <td>
+                    <input class="genInput" id="pass1" type="password" name="pass">
+                </td>
+            </tr>
+            <tr>
+                <th style="width:30%">Name</th>
+                <td><input class="genInput" id="regname" type="text" name="nam"></td>
+            </tr>
+            <tr>
+                <th style="width:30%">E-mail</th>
+                <td><input class="genInput" id="regmail" type="text" name="email"></td>
+            </tr>
+            <tr>
+                <th>Mobile No.</th>
+                <td><input class="genInput" id="regphone" type="number" min="6500000000" name="phn"></td>
+            </tr>
+
+            <tr>
+                <th>Gender</th>
+                <td><input class="genInput" id="reggen" type="Text" name="gen"></td>
+            </tr>
+
+            <tr>
+                <th>Age</th>
+                <td><input class="genInput" id="regage" type="number" max="150" name="age"></td>
+            </tr>
+
+            <tr>
+                <th>Weight</th>
+                <td><input class="genInput" id="regweight" type="number" name="weight"></td>
+            </tr>
+
+            <tr>
+                <th>Height(in cms)</th>
+                <td>
+                    <input class="genInput" id="regheight" type="text" name="height">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <center>
+
+                        <input class="genInput" type="submit" id="Regit" name="regit">
+                    </center>
+                </td>
+            </tr>
+
+        </table>
+        <!--</form>-->
+    </div>
+    <div id="main">
+        <div class="head">
+            Care
+        </div>
+        <div class="cont row">
+            <button class="tab" id="boxlog">Login </button>
+            <button class="tab" id="logout">Log Out </button>
+            <button id="personalised2" type="menu" class="tab">Personalised</button>
+            <button id="health" type="menu" class="tab">Health</button>
+            <button id="self" type="menu" class="tab">Self</button>
+            <button id="beauty" type="menu" class="tab">Beauty</button>
+            <button id="food" type="menu" class="tab">Food</button>
+            <button id="fitness" type="menu" class="tab">Fitness</button>
+            <button id="Personal" type="menu" class="tab">Personal</button>
+
+        </div>
+        <div class="row">
+            <div id="content">
+                <!--Home Tab-->
+                <div id="home1">
+                    <div class="file">
+                        <div class="row">
+                            <div class="col hold">
+                                <input type="image" src="iStock-578289348-1.jpg" id="pic">
+                                <z id="q">FITNESS</z>
+                            </div>
+                            <div class="col hold">
+                                <input type="image" src="shutterstock_626000243.jpg" id="pic">
+                                <z id="w">FOOD</z>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col hide">
+                                <input type="image" src="iStock-655976164.jpg" id="img">
+                                <z id="e">SELF</z>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col hold">
+                                <input type="image" src="shutterstock_1802402650.jpg" id="pic">
+                                <z id="r">HEALTH</z>
+                            </div>
+                            <div class="col hold">
+                                <input type="image" src="iStock-1211630734.jpg" id="pic">
+                                <z id="t">BEAUTY</z>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Health-->
+                <div id="Health1">
+                    <div class="file">
+                        <div class="row">
+                            <div class="col hide">
+                                <input type="image" src="joint pain.jpg" id="img0">
+                                <z id="e">What causes joint pain?</z>
+                                <p>Dr Attam Singh of the London Pain Clinic discusses how we can overcome musculoskeletal pain</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col hold">
+                                <input type="image" src="sleep.jpg" id="pic">
+                                <z id="q">How you’re sabotaging your sleep</z>
+                                <p>We’re treating insomnia all wrong, says sleep expert Stephanie Romiszewski</p>
+                            </div>
+                            <div class="col hold">
+                                <input type="image" src="laughter.jpg" id="pic">
+                                <z id="w">Should I try laughter therapy?</z>
+                                <p>Embracing our silly side is fun, but proponents of this practice believe it boosts our health and wellbeing, too</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col hide">
+                                <input type="image" src="food disorder.jpg" id="img">
+                                <z id="e">Could you have an eating disorder without knowing it?</z>
+                                <p>Eating disorder specialist Dr Joanna Silver shares how restricting your diet in the name of so-called ‘wellbeing’ can become problematic</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col hold">
+                                <input type="image" src="suppliment.jpg" id="pic">
+                                <z id="r">The ultimate supplement guide</z>
+                                <p>From PMS to achy joints, there’s a supplement out there for all your annoying health niggles
+                                </p>
+                            </div>
+                            <div class="col hold">
+                                <input type="image" src="cancer.jpg" id="pic">
+                                <z id="t">7 ways to cut your cancer risk</z>
+                                <p>You can reduce your risk of cancer significantly by getting to grips with these healthy lifestyle habits…</p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!--beauty Tab-->
+                <div id="Beauty1">
+                    <div class="file">
+                        <div class="row">
+                            <div class="col hide">
+                                <input type="image" src="acne.jpg" id="img1">
+                                <z id="e">How to treat adult acne</z>
+                                <p>Irritating and painful, it’s no wonder acne can put a dent in your self-confidence. Here’s how to approach treating it</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col hold">
+                                <input type="image" src="face mask.jpg" id="pic">
+                                <z id="q">Face masks for every skin concern</z>
+                                <p>Meet a new generation of face masks here to cater for all your complexion woes</p>
+                            </div>
+                            <div class="col hold">
+                                <input type="image" src="lip balms.jpg" id="pic">
+                                <z id="w">Beauty balms, decoded</z>
+                                <p>Struggling with dry skin? Time to call in the rescue balms. Aesthetics and dermatology nurse Emma Coleman shares the ingredients worth looking out for</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col hide">
+                                <input type="image" src="hairs.jpg" id="img">
+                                <z id="e">Does your hair need an anti-pollution solution?</z>
+                                <p>We know about anti-pollution skincare – now protective haircare is set to be the next big trend. But what can it do, and is it really necessary?</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col hold">
+                                <input type="image" src="nails.jpg" id="pic">
+                                <z id="r">Your at-home manicure tips</z>
+                                <p>Suffering with cracked cuticles or snap-happy talons? Nail technician Marian Newman shares how to keep nails strong and healthy</p>
+                            </div>
+                            <div class="col hold">
+                                <input type="image" src="sfp.jpg" id="pic">
+                                <z id="t">Everything you don’t know about SPF</z>
+                                <p>When it comes to sun care, school’s still in session – notepads at the ready</p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!--Food Section-->
+                <div id="Food1">
+                    <div class="file">
+                        <div class="row">
+                            <div class="col hide">
+                                <input type="image" src="dal.jpg" id="img2">
+                                <z id="e">Slow cooker vegan lentil dal</z>
+                                <p>This comforting vegan dal recipe is the perfect winter warmer</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col hold">
+                                <input type="image" src="christmas.jpg" id="pic">
+                                <z id="q">How to avoid Christmas weight gain</z>
+                                <p>By January, many of us are on a weight-loss mission – but what if it didn’t have to be that way?</p>
+                            </div>
+                            <div class="col hold">
+                                <input type="image" src="banana bread.jpg" id="pic">
+                                <z id="w">Vegan banana bread</z>
+                                <p>Put overripe bananas to use in this tasty plant-based bake</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col hide">
+                                <input type="image" src="salad.jpg" id="img">
+                                <z id="e">Upgrade to a healthier diet</z>
+                                <p>Forget dramatic cuts and harsh restrictions – these are the new rules for eating smart
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col hold">
+                                <input type="image" src="smoothie.jpg" id="pic">
+                                <z id="r">Apple, kale and maple smoothie</z>
+                                <p>This nutritious green smoothie takes just five minutes to make – perfect for when you're stuck in a breakfast rut!</p>
+                            </div>
+                            <div class="col hold">
+                                <input type="image" src="museli.jpg" id="pic">
+                                <z id="t">Rude Health Bircher muesli</z>
+                                <p>This tasty, nutritious breakfast takes just five minutes of prep the night before…
+                                </p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!--Fitness Section-->
+                <div id="fitness1">
+                    <div class="file">
+                        <div class="row">
+                            <div class="col hide">
+                                <input type="image" src="exercise.png" id="img3">
+                                <z id="e">5 exciting new workouts</z>
+                                <p>particularly for women, is that incorporating weight training will give you a bulky and muscular body</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col hold">
+                                <input type="image" src="cardio.png" id="pic">
+                                <z id="q">Class crashers: Orangetheory Fitness</z>
+                                <p>If it's good enough for Michelle Obama, it's good enough for us!</p>
+                            </div>
+                            <div class="col hold">
+                                <input type="image" src="plank.jpg" id="pic">
+                                <z id="w">Master the move: plank</z>
+                                <p>With spot-on form, this genius move works every muscle</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col hide">
+                                <input type="image" src="gym.jpg" id="img">
+                                <z id="e">5 reasons you need to slow down in the gym</z>
+                                <p>you’re striving for super-quick results, you can easily be pressured into painful workouts.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col hold">
+                                <input type="image" src="squats.jpg" id="pic">
+                                <z id="r">Master the move: squat</z>
+                                <p>Work your legs, core, abs and back with this 5-step guide</p>
+                            </div>
+                            <div class="col hold">
+                                <input type="image" src="weight.jpg" id="pic">
+                                <z id="t">5 reasons women should lift weights</z>
+                                <p></p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!--self-->
+                <div id="self1">
+                    <div class="file">
+                        <div class="row">                            
+                            <div class="col hide">
+                                <input type="image" src="write.jpg" id="img">
+                                <z id="e">How to set meaningful New Year’s resolutions</z>
+                                <p>Each new year offers an opportunity to reflect on what we’ve learned over the past 12 months, and make plans for our future goals</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col hold">
+                                <input type="image" src="art.jpg" id="pic">
+                                <z id="q">Should I try art therapy?</z>
+                                <p>We’ve got the mindful colouring books, but could drawing or painting be as beneficial for your emotional wellbeing as talking therapy?</p>
+                            </div>
+                            <div class="col hold">
+                                <input type="image" src="confident.jpg" id="pic">
+                                <z id="w">How to be body confident</z>
+                                <p>Poor body image affects many women, touching all aspects of our lives and wellbeing. Here’s how to knock the negatives into touch</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col hide">
+                                <input type="image" src="social media.jpg" id="img">
+                                <z id="e">Is social media damaging your mental health?</z>
+                                <p>We investigate the relationship between your social feeds and mental wellbeing</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col hold">
+                                <input type="image" src="grief.jpg" id="pic">
+                                <z id="r">How to deal with grief</z>
+                                <p>It affects us all and changes everything, yet we seldom talk about death – so, let’s break down the process of loss</p>
+                            </div>
+                            <div class="col hold">
+                                <input type="image" src="stress.jpg" id="pic">
+                                <z id="t">Is mindfulness making our stress worse?</z>
+                                <p>Mindfulness is seen as a panacea for our modern mental wellbeing issues. But Professor Ronald Purser argues it’s misused</p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!--sample article 1-->
+                <div id="acne">
+                    <div class="row">
+                        <div class="col hide">
+                            <z id="e">How to treat adult acne</z>
+                            <p>Irritating and painful, it’s no wonder acne can put a dent in your self-confidence. Here’s how to approach treating it</p>
+                            <input type="image" src="acne.jpg" id="art">
+                            <p>
+                                Those of us who’ve suffered with acne in our lives will know how frustrating it is when someone chips in with unsolicited advice about how we should wash our face more, eat healthier, or leave spots make-up free – if only it were that simple! The reality
+                                is that acne is a complex skin condition that varies from person to person and often needs specialist treatment from a dermatologist. But the good news is, these days, even serious cases can be dramatically improved with
+                                the right combination of treatments.<br> ‘Several factors contribute to acne, but the main one is a genetic predisposition,’ says Dr Stefanie Williams, clinical dermatologist and medical
+                                director of European Dermatology London. ‘The wrong skincare and hormonal fluctuations (due to menstruation, coming off the pill and stress) can cause flare-ups, but only if you already have a genetic susceptibility.’ And
+                                if you’re wondering whether diet affecting your skin is a myth, ‘food can affect it,’ Williams explains, ‘but for most people it’s not as strong as often thought. Too much sugar or processed starchy foods can make existing
+                                acne worse, but someone without that genetic link could have a sinful diet and still have clear skin.’ Unfair, right?<br>
+
+                                <h3><b>How to treat acne</b></h3>
+                                ‘Acne is a skin disease, so don’t think of it as a cosmetic problem and try to get rid of it with semi-effective treatments, like salon peels or microdermabrasion,’ says Williams. ‘You’ll need prescription creams and, in severe cases, prescription tablets
+                                along with dermatology grade facials.’ <br> Acne creams come in two groups: antibiotics to fight acne bacteria, and pore-unplugging creams, such as vitamin A derivatives (a clogged pore is
+                                the first step to spot forming). ‘Ideally, a combination of both works best,’ says Williams. ‘If creams aren’t enough, you might have to take an oral antibiotic and, if that’s not working, we might prescribe vitamin A tablets
+                                (isotretinoin), which are known to switch off acne for good in most people.
+                                <br>
+
+                                <h3><b>How to get rid of acne scars</b></h3>
+                                For those self-conscious about the scars leftover from acne, there are procedures that can help. ‘Aesthetic treatments such as micro-needling (which kicks skin into repair mode, boosting collagen production and skin regeneration) are effective,’ says
+                                Williams. However, remember that while micro-needling can reduce the appearance of scars, it’s unlikely to eradicate them completely. ‘For ice-pick scars, which are narrow and very deep, we can use TCA cross [chemical reduction
+                                of scars] treatment,’ says Williams. ‘This is where trichloroacetic acid is put into individual scars using a toothpick.’ <br>
+
+                                <h3><b>How to look after your skin at home</b></h3>
+                                Don’t overload skin with products, use moisturisers, sun protection and make-up that’s oil free. ‘Cleansers should be non-creamy, non-oily foaming formulas – ones containing salicylic acid, glycolic acid and retinol will also exfoliate skin and help to
+                                prevent clogged pores,’ says Williams. In addition to that, avoiding too much sugar in your diet can help keep flare-ups at bay.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--sample article 2-->
+                <div id="dal">
+                    <div class="row">
+                        <div class=" col hide">
+                            <z id="e">Slow cooker vegan lentil dal</z>
+                            <p>This comforting vegan dal recipe is the perfect winter warmer</p>
+                            <input type="image" src="dal.jpg" id="art">
+                            <p>
+                                The beauty of this vegan lentil dal recipe is that you can stick it in your slow cooker in the morning and forget about it – all you need to do in the evening is cook your rice and dinner is ready! Lentils are an excellent source of plant-based protein,
+                                while tomatoes provide vitamin C, needed for a healthy immune system. Plus, it’s topped with toasted cashews, which provide heart-healthy fats, and give a satisfying crunch. It’s the perfect comfort dish for a cold winter’s
+                                evening.
+                                <br>
+                                <br>
+                                <br>Serves 4</br><br> 1 tbsp coconut or vegetable oil<br> 2 tsp mustard seeds<br> 1 tsp fennel seeds<br> 1 tbsp fresh grated ginger<br> 1 large onion, finely diced<br> 2 large garlic cloves, sliced or minced<br> 1 tsp each
+                                of ground cumin, turmeric & garam masala<br> 1 tsp salt<br> 400g split red lentils, well rinsed
+                                <br> 4 tomatoes, diced<br> 900ml hot vegetable stock<br> Salt and freshly ground pepper
+                                <br>
+                                <br>
+                                <br>To serve:</br><br> Basmati rice<br> 1 red chilli, sliced<br> Handful toasted cashew nuts
+                                <br> Coconut cream<br> Coriander leaves<br>
+                                <br> 1. Heat the coconut oil in a small saucepan until it melts (or directly in your slow cooker if it has a sauté function).<br> 2. Add the mustard and fennel seeds and cook over high heat, stirring, until the seeds start
+                                to pop. Add the grated ginger and stir to combine.<br> 3. Lower the heat and add the onion, garlic, spices and salt. Cook, stirring frequently, until the onion is softened and translucent, about 7 minutes.<br> 4. Add the
+                                cooked onions, tomatoes and red lentils in the bowl your slow cooker and stir to combine. Add the stock, stir again, cover and cook until most of the stock has been absorbed and lentils are soft (approximately 8 hours on
+                                low or 6 hours on high.)<br> 5. When it’s ready, stir your lentil dal and season with salt and freshly ground pepper, to your taste. Serve with basmati rice and a little coconut cream drizzled over the top and garnish with
+                                the toasted cashews, sliced chilli and fresh coriander.<br> Cooking note:<br> If you don’t have a slow cooker, you can cook this dal on the stove. Use a large lidded casserole dish to cook the onions in and then add the
+                                tomatoes, lentils and stock. Cook, stirring occasionally, for around 40 minutes or until the liquid has been absorbed.<br>
+
+
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--sample article 3-->
+                <div id="joint">
+                    <div class="row">
+                        <div class="col hide">
+                            <z id="e">What causes joint pain?</z>
+                            <p>Dr Attam Singh of the London Pain Clinic discusses how we can overcome musculoskeletal pain
+                            </p>
+                            <input type="image" src="joint pain.jpg" id="art">
+                            <p>
+                                We tend to think of joint pain as something that just affects elderly patients, but you can get early onset arthritis as a result of trauma, sport or repetitive injuries. There are also juvenile and genetic causes of joint pain – such as psoriatic arthritis,
+                                which affects people with psoriasis; or sceptic arthritis, which is due to an infection.
+                                <br> Pain is experienced through three main categories. First, after trauma to tissues or when organ pain receptors transfer chemicals and impulses to the central nervous system, and the central nervous system transfers
+                                them to our brain. The other route is a trauma to the nervous system itself, which includes the nerves, the central spinal cord and the brain. The final category is when the nervous system is not working appropriately,
+                                so the brain perceives normal impulses as being painful.
+                                <br> We all share these common processes, but the level of impulses felt and the amount of chemicals released vary hugely, so the severity of pain experienced is different from person to person. On top of that, there are
+                                huge social, environmental, and genetic influences, as well as the impact of the way you were brought up. <br> Lower back pain is the biggest cause of disability across all age groups, and it’s estimated that eight in every
+                                10 people will experience back pain at some point. That’s because the back is consistently and continuously in use; it doesn’t rest. Even when you’re sitting, relaxing, there will be some degree of tension in your back.
+                                The only time it rests is when you’re asleep, but even then it may be in a twisted position with your back muscles out of sync. Even within the NHS, we’ve only recently realised how important back care is for longevity.
+                                Ten or 15 years ago it was an afterthought and we’re seeing the consequences of that now.
+                                <br>
+                                <h3><b>Our weight matters</b></h3>
+                                Studies clearly show that reducing weight reduces the risk of musculoskeletal disorders, particularly osteoarthritis in the hips and knees. There are causes of joint pain you can’t do anything about, like rheumatoid arthritis or psoriatic arthritis, which
+                                you’re born with, but you can influence your weight.<br>
+                                <h3><b>Which supps?</b></h3>
+                                Diet-wise, vitamin D, calcium and fish oils are crucial. You need to avoid inflammatory foods, so that means high sugar content foods, additives and processed meats. Cod liver oil is beneficial to joints but also good for your heart and digestion, and
+                                we regularly check vitamin D levels in clinic because a lack of it can cause joint pain.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--Personalised Section-->
+                <div id="personalised1">
+
+                </div>
+                <!--Personal data and info-->
+                <div id="personal1">
+                    <TABLE border="2" cellspacing="10px" style="font-size: 25px;">
+                        <th colspan="2">Personal Physical Details</th>
+                        <TR>
+                            <td>
+                                Name
+                            </td>
+                            <td>
+                                <name>Login To The Website for This Feature</name>
+                            </td>
+                        </TR>
+                        <TR>
+                            <td>
+                                Age
+                            </td>
+                            <td>
+                                <age>Login To The Website for This Feature</age>
+                            </td>
+                        </TR>
+                        <TR>
+                            <td>
+                                ID
+                            </td>
+                            <td>
+                                <id>Login To The Website for This Feature</id>
+                            </td>
+                        </TR>
+                        <TR>
+                            <td>
+                                Gender
+                            </td>
+                            <td>
+                                <gender>Login To The Website for This Feature</gender>
+                            </td>
+                        </TR>
+                        <TR>
+                            <td>
+                                Phone
+                            </td>
+                            <td>
+                                <phone>Login To The Website for This Feature</phone>
+                            </td>
+                        </TR>
+                        <TR>
+                            <td>
+                                Height
+                            </td>
+                            <td>
+                                <height>Login To The Website for This Feature</height>
+                            </td>
+                        </TR>
+                        <TR>
+                            <td>
+                                Weight
+                            </td>
+                            <td>
+                                <weight>Login To The Website for This Feature</weight>
+                            </td>
+                        </TR>
+                        <TR>
+                            <td>
+                                BMI
+                            </td>
+                            <td>
+                                <bmi>Login To The Website for This Feature</bmi>
+                            </td>
+                        </TR>
+                        <TR>
+                            <td>
+                                Email
+                            </td>
+                            <td>
+                                <email>Login To The Website for This Feature</email>
+                            </td>
+                        </TR>
+                        <TR>
+                            <td>
+                                Health Report
+                            </td>
+                            <td>
+                                <health>Login To The Website for This Feature</health>
+                            </td>
+                        </TR>
+                    </TABLE>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
